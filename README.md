@@ -16,4 +16,4 @@ It went horribly.
 
 # Link
 
-<a href="https://twitter.com/MasiveLegendBot">@MasiveLegendBot</a>
+<a href="https://twitter.com/MasiveLegendBot" target="_blank">@MasiveLegendBot</a>
