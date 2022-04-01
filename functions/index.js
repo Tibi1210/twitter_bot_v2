@@ -1,5 +1,7 @@
 
 const prompts = require('./prompts.js');
+const keys = require('./keys.js');
+
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
@@ -15,17 +17,17 @@ const dbRef = admin.firestore().doc("tokens/demo");
 const TwitterAPI = require("twitter-api-v2").default;
 
 const TwitterClient = new TwitterAPI({
-  clientId: "UklpbV95M21VSUFMYUhQTWdiSTk6MTpjaQ",
-  clientSecret: "FdDveluqXBMMXeJwJlJRG0grhFYL1HbA0AJak83oSANkpvgKmi",
+  clientId: keys.clientId,
+  clientSecret: keys.clientSecret,
 });
 
 const callbackURL =
-  "http://127.0.0.1:5000/twitter-bot-legend-demo/us-central1/callback";
+  keys.callbackURL;
 
 const { Configuration, OpenAIApi } = require("openai");
 const configuration = new Configuration({
-  organization: "org-AWr3kLsO37fZv6qfrrk4rVdO",
-  apiKey: "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",
+  organization: keys.organization,
+  apiKey: keys.apiKey,
 });
 const openai = new OpenAIApi(configuration);
 
@@ -88,7 +90,7 @@ exports.tweet = functions.https.onRequest(async (request, response) => {
   
   */
   const nextTweet = await openai.createCompletionFromModel({
-    model: "curie:ft-personal-2022-02-17-22-28-51",
+    model: keys.mymodel,
     prompt: prompts[rnd],
     max_tokens:30
   });
